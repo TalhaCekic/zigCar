@@ -5,9 +5,12 @@ using UnityEngine.UI;
 public class car : MonoBehaviour
 {
     public Image[] cars;
+    public Button LeftButton;
+    public Button RightButton;
     void Start()
     {
-  
+        LeftButton.onClick.AddListener(LeftButtonClick);
+        RightButton.onClick.AddListener(RightButtonClick);
     }
 
     void Update()
@@ -51,4 +54,16 @@ public class car : MonoBehaviour
                 break;
         }
     }
+    void LeftButtonClick()
+    {
+        // Sol butona tıklama işlemleri
+        selectedCar.instance.LeftButton();
+    }
+
+    void RightButtonClick()
+    {
+        // Sağ butona tıklama işlemleri
+        selectedCar.instance.RightButton();
+    }
+
 }

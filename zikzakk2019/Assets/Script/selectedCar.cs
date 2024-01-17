@@ -22,6 +22,10 @@ public class selectedCar : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if (selectedCarValue == 0)
+        {
+            selectedCarValue = 1;
+        }
         selectedCarValue = PlayerPrefs.GetInt(selectCarString, selectedCarValue);
     }
 
