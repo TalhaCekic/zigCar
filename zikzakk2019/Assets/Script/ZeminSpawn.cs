@@ -34,6 +34,6 @@ public class ZeminSpawn : MonoBehaviour
         }
 
         //spawn kodu
-        sonZemin = Instantiate(sonZemin, sonZemin.transform.position + yön, sonZemin.transform.rotation);
+        sonZemin = Instantiate(sonZemin, sonZemin.transform.position + yön*2, sonZemin.transform.rotation);
     }
 }

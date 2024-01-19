@@ -435,7 +435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e5003f49ce2ac74792b7324d375247b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b583c5b0ae83cd4bba08019a1780780, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ea7c8e61fc76a5c4d911ca37f11eddcf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f579c84c11e1e6408ad6920d1e59ac7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1798,7 +1798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f579c84c11e1e6408ad6920d1e59ac7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4aa7975df115e5a4089f084b7bbbb431, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2104,6 +2104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1171224520}
   highScore: {fileID: 1072978362}
+  lastScore: 0
 --- !u!1 &1717849569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e5003f49ce2ac74792b7324d375247b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea7c8e61fc76a5c4d911ca37f11eddcf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2370,7 +2371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4aa7975df115e5a4089f084b7bbbb431, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e5003f49ce2ac74792b7324d375247b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
