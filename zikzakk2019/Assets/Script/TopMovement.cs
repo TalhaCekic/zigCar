@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class TopMovement : MonoBehaviour
     public Animator gameoverBackground;
 
     public float rotationSpeed;
+    private int fuel;
+    public int fuelAdd;
     void Start()
     {
         canvas = GameObject.FindWithTag("GameOverUI");
@@ -96,13 +99,21 @@ public class TopMovement : MonoBehaviour
         transform.position += hareket;
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "fuelTank")
+        {
+            fuel += fuelAdd;
+            collision.gameObject.GetComponent<thisRotation>().activeFalse();
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "zemin")
         {
             score.Score++;
             zemin = collision.gameObject;
-            //collision.gameObject.AddComponent<Rigidbody>();
             zeminSPAWN.zeminOlustur();
             StartCoroutine(ZeminSil(collision.gameObject));
             StartCoroutine(ZeminRbAdd(collision.gameObject));

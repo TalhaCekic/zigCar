@@ -385,13 +385,14 @@ MonoBehaviour:
   rb: {fileID: 8393874266974539433}
   speed: 2
   zeminSPAWN: {fileID: 4377889734229043910}
-  zemin: {fileID: 0}
+  zemin: {fileID: 6020918119967448088, guid: 47bf3c8f99290b34f8abf4ce1b1428b4, type: 3}
   run: 1
   canvas: {fileID: 0}
   canvasT: {fileID: 0}
   GameOverScreen: {fileID: 0}
   gameoverBackground: {fileID: 0}
   rotationSpeed: 10
+  fuelAdd: 0
 --- !u!136 &830217078015372247
 CapsuleCollider:
   m_ObjectHideFlags: 0

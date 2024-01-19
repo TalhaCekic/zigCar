@@ -29,7 +29,6 @@ public class selectedCar : MonoBehaviour
         selectedCarValue = PlayerPrefs.GetInt(selectCarString, selectedCarValue);
     }
 
-    // Update is called once per frame
     void Update()
     {
         cars();
@@ -43,7 +42,8 @@ public class selectedCar : MonoBehaviour
 
     public void LeftButton()
     {
-        selectedCarValue = (selectedCarValue + 4) % _ScribtableCarSelected.Cars.Length + 1;
+        // selectedCarValue = (selectedCarValue + 4) % _ScribtableCarSelected.Cars.Length + 1;
+        selectedCarValue = (selectedCarValue + _ScribtableCarSelected.Cars.Length - 2) % _ScribtableCarSelected.Cars.Length + 1;
         saveCar();
     }
 
@@ -64,13 +64,16 @@ public class selectedCar : MonoBehaviour
                 selecetCar = _ScribtableCarSelected.Cars[1];
                 break; 
             case 3:
-                selecetCar = _ScribtableCarSelected.Cars[2];
-                break; 
+                selecetCar = _ScribtableCarSelected.Cars[2];  
+                break;
             case 4:
                 selecetCar = _ScribtableCarSelected.Cars[3];
-                break;
+                break; 
             case 5:
                 selecetCar = _ScribtableCarSelected.Cars[4];
+                break;
+            case 6:
+                selecetCar = _ScribtableCarSelected.Cars[5];
                 break;
         }
     }
