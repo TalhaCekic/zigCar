@@ -9,6 +9,7 @@ public class selectedCar : MonoBehaviour
     public int selectedCarValue = 1;
     public string selectCarString = "selectCar";
     public GameObject selecetCar;
+    private int totalSelectableCar;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class selectedCar : MonoBehaviour
         {
             selectedCarValue = 1;
         }
+
         selectedCarValue = PlayerPrefs.GetInt(selectCarString, selectedCarValue);
     }
 
@@ -43,7 +45,8 @@ public class selectedCar : MonoBehaviour
     public void LeftButton()
     {
         // selectedCarValue = (selectedCarValue + 4) % _ScribtableCarSelected.Cars.Length + 1;
-        selectedCarValue = (selectedCarValue + _ScribtableCarSelected.Cars.Length - 2) % _ScribtableCarSelected.Cars.Length + 1;
+        selectedCarValue = (selectedCarValue + _ScribtableCarSelected.Cars.Length - 2) %
+            _ScribtableCarSelected.Cars.Length + 1;
         saveCar();
     }
 
@@ -58,22 +61,64 @@ public class selectedCar : MonoBehaviour
         switch (selectedCarValue)
         {
             case 1:
-                selecetCar = _ScribtableCarSelected.Cars[0];
-                break; 
+                if (car.instance.soldCar)
+                {
+                    selecetCar = _ScribtableCarSelected.Cars[0];
+                }
+                else
+                {
+                    selecetCar = null;
+                }
+                break;
             case 2:
-                selecetCar = _ScribtableCarSelected.Cars[1];
-                break; 
+                if (car.instance.soldCar2)
+                {
+                    selecetCar = _ScribtableCarSelected.Cars[1];
+                }
+                else
+                {
+                    selecetCar = null;
+                }
+                break;
             case 3:
-                selecetCar = _ScribtableCarSelected.Cars[2];  
+                if (car.instance.soldCar3)
+                {
+                    selecetCar = _ScribtableCarSelected.Cars[2];
+                }
+                else
+                {
+                    selecetCar = null;
+                }
                 break;
             case 4:
-                selecetCar = _ScribtableCarSelected.Cars[3];
-                break; 
+                if (car.instance.soldCar4)
+                {
+                    selecetCar = _ScribtableCarSelected.Cars[3];
+                }
+                else
+                {
+                    selecetCar = null;
+                }
+                break;
             case 5:
-                selecetCar = _ScribtableCarSelected.Cars[4];
+                if (car.instance.soldCar5)
+                {
+                    selecetCar = _ScribtableCarSelected.Cars[4];
+                }
+                else
+                {
+                    selecetCar = null;
+                }
                 break;
             case 6:
-                selecetCar = _ScribtableCarSelected.Cars[5];
+                if (car.instance.soldCar6)
+                {
+                    selecetCar = _ScribtableCarSelected.Cars[5];
+                }
+                else
+                {
+                    selecetCar = null;
+                }
                 break;
         }
     }

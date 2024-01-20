@@ -9,7 +9,6 @@ public class thisRotation : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(0, 0, 100* Time.deltaTime);
@@ -17,6 +16,7 @@ public class thisRotation : MonoBehaviour
     
     public void activeFalse()
     {
+        //Destroy(this.gameObject);
         this.gameObject.SetActive(false);
     }
 }
