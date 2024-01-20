@@ -64,8 +64,6 @@ public class TopMovement : MonoBehaviour
             GameOverScreen.gameObject.SetActive(true);
             if (GameOverScreen == true)
             {
-                gameoverBackground.SetBool("dead", true);
-
                 if (transform.position.y <= -25f)
                 {
                     Time.timeScale = 0;
@@ -116,6 +114,18 @@ public class TopMovement : MonoBehaviour
         if (currentFuel > 100)
         {
             currentFuel = 100;
+        }
+        else if(currentFuel <=0)
+        {
+            //ölme:::
+            GameOverScreen.gameObject.SetActive(true);
+            if (GameOverScreen == true)
+            {
+                if (transform.position.y <= -25f)
+                {
+                    Time.timeScale = 0;
+                }
+            }
         }
     }
 

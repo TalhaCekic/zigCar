@@ -9,11 +9,11 @@ public class CameraTakip : MonoBehaviour
 
     void Start()
     {
-        if (BallLocation !=null)
-        {
-            fark = transform.position - BallLocation.transform.position;
-
-        }
+        // if (BallLocation !=null)
+        // {
+        //     fark = transform.position - BallLocation.transform.position;
+        //
+        // }
     }
     
     void Update()
