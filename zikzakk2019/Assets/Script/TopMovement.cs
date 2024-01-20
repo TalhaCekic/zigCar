@@ -9,6 +9,7 @@ public class TopMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
 
+    public static TopMovement instance;
     //hýz ve yn veriyoruz
     Vector3 rota;
     public float speed;
@@ -23,10 +24,17 @@ public class TopMovement : MonoBehaviour
     public Animator gameoverBackground;
 
     public float rotationSpeed;
-    private int fuel;
+
+    public string fuelString = "fuel";
+    public string wheelString = "wheel";
+    public float MaxFuel;
+    public float currentFuel;
     public int fuelAdd;
+    public int wheel;
+    public int wheelAdd;
     void Start()
     {
+        instance = this;
         canvas = GameObject.FindWithTag("GameOverUI");
         canvasT = canvas.transform;
         GameOverScreen = canvasT.GetChild(0);
@@ -40,6 +48,11 @@ public class TopMovement : MonoBehaviour
         fall = false;
         speed = 2;
         transform.position = new Vector3(0, 0.5f, -0.8f);
+
+        currentFuel = MaxFuel;
+        fuelAdd = 20;
+        wheelAdd= 1;
+        wheel = PlayerPrefs.GetInt(wheelString, wheel);
     }
 
     void Update()
@@ -97,14 +110,26 @@ public class TopMovement : MonoBehaviour
     {
         Vector3 hareket = rota * Time.deltaTime * speed;
         transform.position += hareket;
+
+    
+        currentFuel -= Time.deltaTime;
+        if (currentFuel > 100)
+        {
+            currentFuel = 100;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "fuelTank")
         {
-            fuel += fuelAdd;
+            currentFuel += fuelAdd;
             collision.gameObject.GetComponent<thisRotation>().activeFalse();
+        }
+        if (collision.gameObject.tag == "wheel")
+        {
+            wheel += wheelAdd;
+            collision.gameObject.GetComponent<wheelRotation>().activeFalse();
         }
     }
 

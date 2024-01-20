@@ -22,6 +22,7 @@ public class car : MonoBehaviour
         instance = this;
         LeftButton.onClick.AddListener(LeftButtonClick);
         RightButton.onClick.AddListener(RightButtonClick);
+
     }
 
     void Update()
@@ -149,6 +150,8 @@ public class car : MonoBehaviour
                 cars[5].gameObject.SetActive(true);
                 break;
         }
+
+        PlayerPrefs.Save();
     }
     void LeftButtonClick()
     {

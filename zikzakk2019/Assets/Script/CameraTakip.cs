@@ -9,20 +9,20 @@ public class CameraTakip : MonoBehaviour
 
     void Start()
     {
-        fark = transform.position - BallLocation.transform.position;
+        if (BallLocation !=null)
+        {
+            fark = transform.position - BallLocation.transform.position;
+
+        }
     }
-
-
+    
     void Update()
     {
-        
-            BallLocation = GameObject.FindWithTag("Player");
-        
-        
-            if (TopMovement.fall == false && BallLocation != null)
-            {
-                transform.position = BallLocation.transform.position + fark;
-            }
-        
+        BallLocation = GameObject.FindWithTag("Player");
+
+        if (TopMovement.fall == false && BallLocation != null)
+        {
+            transform.position = BallLocation.transform.position + fark;
+        }
     }
 }

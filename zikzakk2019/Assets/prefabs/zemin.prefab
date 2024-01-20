@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FuelObj: {fileID: 1966527978887843182, guid: 1263569e9c052f2428cd8c25efe8e2e4, type: 3}
+  WheelObj: {fileID: 3341872600598655768, guid: 5575365566d44f9458f3f137d1ed3de7, type: 3}

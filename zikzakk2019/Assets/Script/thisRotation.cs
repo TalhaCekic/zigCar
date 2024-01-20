@@ -16,7 +16,7 @@ public class thisRotation : MonoBehaviour
     
     public void activeFalse()
     {
-        //Destroy(this.gameObject);
-        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
+        //this.gameObject.SetActive(false);
     }
 }

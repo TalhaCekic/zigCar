@@ -44,7 +44,6 @@ public class selectedCar : MonoBehaviour
 
     public void LeftButton()
     {
-        // selectedCarValue = (selectedCarValue + 4) % _ScribtableCarSelected.Cars.Length + 1;
         selectedCarValue = (selectedCarValue + _ScribtableCarSelected.Cars.Length - 2) %
             _ScribtableCarSelected.Cars.Length + 1;
         saveCar();

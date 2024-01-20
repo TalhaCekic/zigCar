@@ -8,6 +8,7 @@ TagManager:
   - carSpawner
   - GameOverUI
   - fuelTank
+  - wheel
   layers:
   - Default
   - TransparentFX
