@@ -5,20 +5,26 @@ using UnityEngine;
 
 public class carSpawn : MonoBehaviour
 {
-    //public bool isSpawn;
+    public static carSpawn instance;
+    public bool isSpawn;
 
     private void Awake()
     {
-        Instantiate(selectedCar.instance.selecetCar);
+        
     }
 
     void Start()
     {
-       
+        instance = this;
+
     }
 
     void Update()
     {
-        
+        if (isSpawn)
+        {
+            Instantiate(selectedCar.instance.selecetCar);
+            isSpawn = false;
+        }
     }
 }

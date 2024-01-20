@@ -6,20 +6,23 @@ using UnityEngine.SceneManagement;
 public class screenManager : MonoBehaviour
 {
     public Animator gameoverBackground;
-    public GameObject  GameOverScreen;
-    
+    public GameObject GameOverScreen;
+    public GameObject menu;
+
     void Start()
     {
-        gameoverBackground = GetComponent<Animator>();
-        gameObject.SetActive(false);
+        gameoverBackground = GameOverScreen.GetComponent<Animator>();
+        GameOverScreen.SetActive(false);
+        menu.SetActive(true);
     }
+
     public void deadScreen()
     {
-       Time.timeScale = 1;
+        Time.timeScale = 1;
         gameObject.SetActive(true);
-        gameoverBackground.SetBool("dead",true);
-        
+        gameoverBackground.SetBool("dead", true);
     }
+
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -27,24 +30,23 @@ public class screenManager : MonoBehaviour
 
     public void start()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        Time.timeScale = 0;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+        carSpawn.instance.isSpawn = true;
+        menu.SetActive(false);
     }
 
-    public void mainMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
-    }
+    // public void mainMenu()
+    // {
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    // }
 
     public void exit()
     {
         Application.Quit();
     }
 
-
-    
     void Update()
     {
-        
     }
 }

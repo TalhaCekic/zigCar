@@ -9,8 +9,7 @@ public class fuelDec : MonoBehaviour
     void Start()
     {
   
-        randomFuelAvailable = Random.Range(1, 2);
-print(randomFuelAvailable);
+        randomFuelAvailable = Random.Range(0, 2);
         if (randomFuelAvailable == 2)
         {
             FuelObj.SetActive(true);
