@@ -12,8 +12,8 @@ public class fuelDec : MonoBehaviour
 
     void Start()
     {
-        int seed = Mathf.FloorToInt(transform.position.x) + Mathf.FloorToInt(transform.position.y) + Mathf.FloorToInt(transform.position.z);
-        Random.InitState(seed);
+        // int seed = Mathf.FloorToInt(transform.position.x) + Mathf.FloorToInt(transform.position.y) + Mathf.FloorToInt(transform.position.z);
+        // Random.InitState(seed);
 
         int randomFuelAvailable = Random.Range(0, 4);
 

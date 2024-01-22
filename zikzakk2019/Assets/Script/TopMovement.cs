@@ -37,6 +37,8 @@ public class TopMovement : MonoBehaviour
     public AudioSource carSound;
     public AudioSource wheelSound;
 
+    public bool changeSound;
+
     void Start()
     {
         instance = this;
@@ -62,24 +64,18 @@ public class TopMovement : MonoBehaviour
 
     void Update()
     {
-        // if (transform.position.y <= 0f)
-        // {
-        //     if (screenManager.instance.isActiveSound)
-        //     {
-        //         wheelSound.Play();
-        //     }
-        // }
-         if (transform.position.y <= -1f)
+        if (rb.velocity.magnitude > 0)
         {
-            if (screenManager.instance.isActiveSound)
-            {
-                wheelSound.Play();
-            }
+        }
+
+        if (transform.position.y <= -1f)
+        {
             fall = true;
             //ölme:::
             GameOverScreen.gameObject.SetActive(true);
             if (GameOverScreen == true)
             {
+                carSound.Stop();
                 if (transform.position.y <= -25f)
                 {
                     Time.timeScale = 0;
@@ -101,10 +97,18 @@ public class TopMovement : MonoBehaviour
                 if (rota.x == 0)
                 {
                     rota = Vector3.left;
+                    if (screenManager.instance.isActiveSound)
+                    {
+                        wheelSound.Play();
+                    }
                 }
                 else
                 {
                     rota = Vector3.forward;
+                    if (screenManager.instance.isActiveSound)
+                    {
+                        wheelSound.Play();
+                    }
                 }
 
                 speed += run * Time.deltaTime;
@@ -127,10 +131,11 @@ public class TopMovement : MonoBehaviour
         {
             carSound.Stop();
         }
-        // else
-        // {
-        //     carSound.loop();
-        // }
+        else if (screenManager.instance.isActiveSound && !changeSound)
+        {
+            carSound.Play();
+            changeSound = true;
+        }
     }
 
     private void FixedUpdate()
@@ -150,6 +155,7 @@ public class TopMovement : MonoBehaviour
             GameOverScreen.gameObject.SetActive(true);
             if (GameOverScreen == true)
             {
+                carSound.Stop();
                 if (transform.position.y <= -25f)
                 {
                     Time.timeScale = 0;
@@ -168,16 +174,17 @@ public class TopMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "wheel")
         {
-            wheel += 500;
-            // wheel += wheelAdd;
+            // wheel += 500;
+            wheel += wheelAdd;
             collision.gameObject.GetComponent<wheelRotation>().activeFalse();
         }
     }
 
     // private void OnTriggerStay(Collider other)
     // {
-    //     if (other.gameObject.tag != "zemin")
+    //     if ( other.gameObject.tag == null)
     //     {
+    //         print("çalıştır");
     //         if (screenManager.instance.isActiveSound)
     //         {
     //             wheelSound.Play();

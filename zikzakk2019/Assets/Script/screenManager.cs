@@ -57,13 +57,19 @@ public class screenManager : MonoBehaviour
 
     public void restart()
     {
-        soundAudioButton.Play();
+        if (isActiveSound)
+        {
+            soundAudioButton.Play();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void starts()
     {
-        soundAudioButton.Play();
+        if (isActiveSound)
+        {
+            soundAudioButton.Play();
+        }
         if (selectedCar.instance.selecetCar != null)
         {
             Time.timeScale = 1;
@@ -173,7 +179,10 @@ public class screenManager : MonoBehaviour
 
     public void Sound()
     {
-        soundAudioButton.Play();
+        if (isActiveSound)
+        {
+            soundAudioButton.Play();
+        }
         isActiveSound = !isActiveSound;
         if (isActiveSound)
         {
@@ -189,7 +198,10 @@ public class screenManager : MonoBehaviour
 
     public void exit()
     {
-        soundAudioButton.Play();
+        if (isActiveSound)
+        {
+            soundAudioButton.Play();
+        }
         Application.Quit();
     }
 
