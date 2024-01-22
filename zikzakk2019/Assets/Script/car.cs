@@ -19,9 +19,12 @@ public class car : MonoBehaviour
     public TMP_Text kilitliText;
     
     public GameObject LockImage;
+    
+   
     void Start()
     {
         instance = this;
+        
         LeftButton.onClick.AddListener(LeftButtonClick);
         RightButton.onClick.AddListener(RightButtonClick);
 

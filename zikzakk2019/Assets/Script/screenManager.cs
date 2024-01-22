@@ -26,6 +26,11 @@ public class screenManager : MonoBehaviour
     public int soldCarInt5;
     public int soldCarInt6;
 
+    public AudioSource soundAudio;
+    public Sprite activeSound;
+    public Sprite deActiveSound;
+    public Button soundButton;
+    public bool isActiveSound;
     void Start()
     {
         //PlayerPrefs.DeleteAll();
@@ -36,11 +41,13 @@ public class screenManager : MonoBehaviour
         soldCarInt5 = PlayerPrefs.GetInt(soldcarString5, soldCarInt5);
         soldCarInt6 = PlayerPrefs.GetInt(soldcarString6, soldCarInt6);
         /////
-        gameoverBackground = GameOverScreen.GetComponent<Animator>();
+        //gameoverBackground = GameOverScreen.GetComponent<Animator>();
         GameOverScreen.SetActive(false);
         menu.SetActive(true);
         IngameScoreText.gameObject.SetActive(false);
         ShopUI.SetActive(false);
+
+        soundAudio = GetComponent<AudioSource>();
     }
 
     public void restart()
@@ -153,6 +160,21 @@ public class screenManager : MonoBehaviour
     {
         ShopUI.SetActive(false);
         menu.SetActive(true);
+    }
+
+    public void Sound()
+    {
+        isActiveSound = !isActiveSound;
+        if (isActiveSound)
+        {
+            soundAudio.enabled = true;
+            soundButton.image.sprite = activeSound;
+        }
+        else
+        {
+            soundAudio.enabled = false;
+            soundButton.image.sprite = deActiveSound;
+        }
     }
 
     public void exit()
