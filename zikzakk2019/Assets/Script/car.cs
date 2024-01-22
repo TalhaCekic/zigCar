@@ -17,6 +17,8 @@ public class car : MonoBehaviour
     public bool soldCar6;
 
     public TMP_Text kilitliText;
+    
+    public GameObject LockImage;
     void Start()
     {
         instance = this;
@@ -29,18 +31,21 @@ public class car : MonoBehaviour
     {
         switch (selectedCar.instance.selectedCarValue)
         {
+           
             case 1:
                 if (!soldCar)
                 {
                     cars[0].color = Color.gray;
                     kilitliText.text = "Locked";
                     kilitliText.color = Color.red;
+                    LockImage.SetActive(true);
                 }
                 else
                 {
                     cars[0].color = Color.white;
                     kilitliText.text = "Unlocked";
                     kilitliText.color = Color.green;
+                    LockImage.SetActive(false);
                 }
                 cars[0].gameObject.SetActive(true);
                 cars[1].gameObject.SetActive(false);
@@ -55,12 +60,14 @@ public class car : MonoBehaviour
                     cars[1].color = Color.gray;
                     kilitliText.text = "Locked";
                     kilitliText.color = Color.red;
+                    LockImage.SetActive(true);
                 }
                 else
                 {
                     cars[1].color = Color.white;
                     kilitliText.text = "Unlocked";
                     kilitliText.color = Color.green;
+                    LockImage.SetActive(false);
                 }
                 cars[0].gameObject.SetActive(false);
                 cars[1].gameObject.SetActive(true);
@@ -75,12 +82,14 @@ public class car : MonoBehaviour
                     cars[2].color = Color.gray;
                     kilitliText.text = "Locked";
                     kilitliText.color = Color.red;
+                    LockImage.SetActive(true);
                 }
                 else
                 {
                     cars[2].color = Color.white;
                     kilitliText.text = "Unlocked";
                     kilitliText.color = Color.green;
+                    LockImage.SetActive(false);
                 }
                 cars[0].gameObject.SetActive(false);
                 cars[1].gameObject.SetActive(false);
@@ -95,12 +104,14 @@ public class car : MonoBehaviour
                     cars[3].color = Color.gray;
                     kilitliText.text = "Locked";
                     kilitliText.color = Color.red;
+                    LockImage.SetActive(true);
                 }
                 else
                 {
                     cars[3].color = Color.white;
                     kilitliText.text = "Unlocked";
                     kilitliText.color = Color.green;
+                    LockImage.SetActive(false);
                 }
                 cars[0].gameObject.SetActive(false);
                 cars[1].gameObject.SetActive(false);
@@ -115,12 +126,14 @@ public class car : MonoBehaviour
                     cars[4].color = Color.gray;
                     kilitliText.text = "Locked";
                     kilitliText.color = Color.red;
+                    LockImage.SetActive(true);
                 }
                 else
                 {
                     cars[4].color = Color.white;
                     kilitliText.text = "Unlocked";
                     kilitliText.color = Color.green;
+                    LockImage.SetActive(false);
                 }
                 cars[0].gameObject.SetActive(false);
                 cars[1].gameObject.SetActive(false);
@@ -135,12 +148,14 @@ public class car : MonoBehaviour
                     cars[5].color = Color.gray;
                     kilitliText.text = "Locked";
                     kilitliText.color = Color.red;
+                    LockImage.SetActive(true);
                 }
                 else
                 {
                     cars[5].color = Color.white;
                     kilitliText.text = "Unlocked";
                     kilitliText.color = Color.green;
+                    LockImage.SetActive(false);
                 }
                 cars[0].gameObject.SetActive(false);
                 cars[1].gameObject.SetActive(false);
@@ -149,19 +164,15 @@ public class car : MonoBehaviour
                 cars[4].gameObject.SetActive(false);
                 cars[5].gameObject.SetActive(true);
                 break;
-        }
-
-        PlayerPrefs.Save();
+        } 
     }
     void LeftButtonClick()
     {
-        // Sol butona tıklama işlemleri
         selectedCar.instance.LeftButton();
     }
 
     void RightButtonClick()
     {
-        // Sağ butona tıklama işlemleri
         selectedCar.instance.RightButton();
     }
 

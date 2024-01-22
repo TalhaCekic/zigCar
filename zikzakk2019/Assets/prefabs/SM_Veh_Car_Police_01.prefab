@@ -740,15 +740,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 893733506096521582}
-  speed: 0
+  speed: 15
   zeminSPAWN: {fileID: 8582525246978517814}
   zemin: {fileID: 6020918119967448088, guid: 47bf3c8f99290b34f8abf4ce1b1428b4, type: 3}
-  run: 0
+  run: 1
   canvas: {fileID: 0}
   canvasT: {fileID: 0}
   GameOverScreen: {fileID: 0}
   gameoverBackground: {fileID: 0}
-  rotationSpeed: 0
+  rotationSpeed: 10
   fuelString: fuel
   wheelString: wheel
   MaxFuel: 175

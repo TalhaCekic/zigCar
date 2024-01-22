@@ -94,7 +94,6 @@ public class score : MonoBehaviour
         else
         {
             wheelText.text = wheel.ToString();
-            print("TEST");
         }
 
         color();

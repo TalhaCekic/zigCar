@@ -43,7 +43,7 @@ public class TopMovement : MonoBehaviour
         Time.timeScale = 0;
         rb = GetComponent<Rigidbody>();
         GetComponent<score>();
-        //öncelikle topa ileri gitmesini istiroyuz
+        //öncelikle aracın ileri gitmesini istiroyuz
         rota = Vector3.forward;
         fall = false;
         speed = 2;
@@ -111,9 +111,9 @@ public class TopMovement : MonoBehaviour
 
     
         currentFuel -= Time.deltaTime;
-        if (currentFuel > 100)
+        if (currentFuel > MaxFuel)
         {
-            currentFuel = 100;
+            currentFuel = MaxFuel;
         }
         else if(currentFuel <=0)
         {
@@ -138,7 +138,8 @@ public class TopMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "wheel")
         {
-            wheel += wheelAdd;
+            wheel += 500;
+           // wheel += wheelAdd;
             collision.gameObject.GetComponent<wheelRotation>().activeFalse();
         }
     }

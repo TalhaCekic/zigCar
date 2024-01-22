@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1412613259012592538}
-  speed: 2
+  speed: 15
   zeminSPAWN: {fileID: 6416287759278913096}
   zemin: {fileID: 6020918119967448088, guid: 47bf3c8f99290b34f8abf4ce1b1428b4, type: 3}
   run: 1
@@ -357,7 +357,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
