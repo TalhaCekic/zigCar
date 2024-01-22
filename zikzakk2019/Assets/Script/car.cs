@@ -171,11 +171,13 @@ public class car : MonoBehaviour
     }
     void LeftButtonClick()
     {
+        screenManager.instance.soundAudioButton.Play();
         selectedCar.instance.LeftButton();
     }
 
     void RightButtonClick()
     {
+        screenManager.instance.soundAudioButton.Play();
         selectedCar.instance.RightButton();
     }
 

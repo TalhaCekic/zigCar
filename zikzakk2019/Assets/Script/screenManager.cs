@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class screenManager : MonoBehaviour
 {
+    public static screenManager instance;
     public Animator gameoverBackground;
     public GameObject GameOverScreen;
     public GameObject menu;
@@ -26,13 +27,17 @@ public class screenManager : MonoBehaviour
     public int soldCarInt5;
     public int soldCarInt6;
 
-    public AudioSource soundAudio;
+    public string sound = "sound";
+    public int soundV;
+    public AudioSource soundAudioButton;
+    public AudioSource soundAudioMusic;
     public Sprite activeSound;
     public Sprite deActiveSound;
     public Button soundButton;
     public bool isActiveSound;
     void Start()
     {
+        instance = this;
         //PlayerPrefs.DeleteAll();
         soldCarInt = 1;
         soldCarInt2 = PlayerPrefs.GetInt(soldcarString2, soldCarInt2);
@@ -47,16 +52,18 @@ public class screenManager : MonoBehaviour
         IngameScoreText.gameObject.SetActive(false);
         ShopUI.SetActive(false);
 
-        soundAudio = GetComponent<AudioSource>();
+        soundV = PlayerPrefs.GetInt(sound, soundV);
     }
 
     public void restart()
     {
+        soundAudioButton.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void starts()
     {
+        soundAudioButton.Play();
         if (selectedCar.instance.selecetCar != null)
         {
             Time.timeScale = 1;
@@ -68,12 +75,14 @@ public class screenManager : MonoBehaviour
 
     public void Shop()
     {
+        soundAudioButton.Play();
         ShopUI.SetActive(true);
         menu.SetActive(false);
     }
 
     public void buyCarIndex(int value)
     {
+        soundAudioButton.Play();
         int pay1 = 150;
         int pay2 = 280;
         int pay3 = 350;
@@ -91,7 +100,6 @@ public class screenManager : MonoBehaviour
                     soldCarInt = 1;
                     score.instance.wheel -= pay1;
                 }
-
                 break;
             case 2:
                 if (pay2 < score.instance.wheel)
@@ -158,27 +166,30 @@ public class screenManager : MonoBehaviour
 
     public void back()
     {
+        soundAudioButton.Play();
         ShopUI.SetActive(false);
         menu.SetActive(true);
     }
 
     public void Sound()
     {
+        soundAudioButton.Play();
         isActiveSound = !isActiveSound;
         if (isActiveSound)
         {
-            soundAudio.enabled = true;
-            soundButton.image.sprite = activeSound;
+            soundV = 1;
         }
         else
         {
-            soundAudio.enabled = false;
-            soundButton.image.sprite = deActiveSound;
+            soundV = 0;
         }
+        PlayerPrefs.SetInt(sound,soundV);
+        PlayerPrefs.Save();
     }
 
     public void exit()
     {
+        soundAudioButton.Play();
         Application.Quit();
     }
 
@@ -260,6 +271,19 @@ public class screenManager : MonoBehaviour
             soldList[5].SetActive(false);
             Buttons[5].SetActive(true);
             car.instance.soldCar5 = false;
+        }
+
+        if (soundV == 1)
+        {
+            isActiveSound = true;
+            soundAudioButton.enabled = true;
+            soundButton.image.sprite = activeSound;
+        }
+        else
+        {
+            isActiveSound = false;
+            soundAudioButton.enabled = false;
+            soundButton.image.sprite = deActiveSound;
         }
     }
 }

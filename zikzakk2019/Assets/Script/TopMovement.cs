@@ -10,6 +10,7 @@ public class TopMovement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     public static TopMovement instance;
+
     //hýz ve yn veriyoruz
     Vector3 rota;
     public float speed;
@@ -32,6 +33,10 @@ public class TopMovement : MonoBehaviour
     public int fuelAdd;
     public int wheel;
     public int wheelAdd;
+
+    public AudioSource carSound;
+    public AudioSource wheelSound;
+
     void Start()
     {
         instance = this;
@@ -51,14 +56,25 @@ public class TopMovement : MonoBehaviour
 
         currentFuel = MaxFuel;
         fuelAdd = 20;
-        wheelAdd= 1;
+        wheelAdd = 1;
         wheel = PlayerPrefs.GetInt(wheelString, wheel);
     }
 
     void Update()
     {
-        if (transform.position.y <= -1f)
+        // if (transform.position.y <= 0f)
+        // {
+        //     if (screenManager.instance.isActiveSound)
+        //     {
+        //         wheelSound.Play();
+        //     }
+        // }
+         if (transform.position.y <= -1f)
         {
+            if (screenManager.instance.isActiveSound)
+            {
+                wheelSound.Play();
+            }
             fall = true;
             //ölme:::
             GameOverScreen.gameObject.SetActive(true);
@@ -75,6 +91,7 @@ public class TopMovement : MonoBehaviour
                 return;
             }
         }
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -96,12 +113,24 @@ public class TopMovement : MonoBehaviour
 
         if (rota == Vector3.left)
         {
-            transform.localRotation = Quaternion.Lerp(transform.rotation,quaternion.RotateY(4.7f), Time.deltaTime * rotationSpeed);
+            transform.localRotation = Quaternion.Lerp(transform.rotation, quaternion.RotateY(4.7f),
+                Time.deltaTime * rotationSpeed);
         }
         else
         {
-            transform.localRotation = Quaternion.Lerp(transform.rotation,quaternion.RotateY(0), Time.deltaTime * rotationSpeed);
+            transform.localRotation =
+                Quaternion.Lerp(transform.rotation, quaternion.RotateY(0), Time.deltaTime * rotationSpeed);
         }
+
+
+        if (!screenManager.instance.isActiveSound)
+        {
+            carSound.Stop();
+        }
+        // else
+        // {
+        //     carSound.loop();
+        // }
     }
 
     private void FixedUpdate()
@@ -109,13 +138,13 @@ public class TopMovement : MonoBehaviour
         Vector3 hareket = rota * Time.deltaTime * speed;
         transform.position += hareket;
 
-    
+
         currentFuel -= Time.deltaTime;
         if (currentFuel > MaxFuel)
         {
             currentFuel = MaxFuel;
         }
-        else if(currentFuel <=0)
+        else if (currentFuel <= 0)
         {
             //ölme:::
             GameOverScreen.gameObject.SetActive(true);
@@ -136,13 +165,25 @@ public class TopMovement : MonoBehaviour
             currentFuel += fuelAdd;
             collision.gameObject.GetComponent<thisRotation>().activeFalse();
         }
+
         if (collision.gameObject.tag == "wheel")
         {
             wheel += 500;
-           // wheel += wheelAdd;
+            // wheel += wheelAdd;
             collision.gameObject.GetComponent<wheelRotation>().activeFalse();
         }
     }
+
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.gameObject.tag != "zemin")
+    //     {
+    //         if (screenManager.instance.isActiveSound)
+    //         {
+    //             wheelSound.Play();
+    //         }
+    //     }
+    // }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -161,7 +202,8 @@ public class TopMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(silinecekZemin);
-    }  
+    }
+
     IEnumerator ZeminRbAdd(GameObject silinecekZemin)
     {
         yield return new WaitForSeconds(0.2f);
